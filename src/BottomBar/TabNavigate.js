@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MainPageScreen from '../screens/MainPageScreen';
+import MainPageScreen from '../screens/mainPage/MainPageScreen';
 import BottomBarsList from './BottomBarsList';
 import MainLogo from '../assets/svgIcons';
 import ConstatsApp from '../ConstatsApp';
@@ -36,10 +36,10 @@ const TabNavigate = ({navigation}) => {
           }}
           listeners={{
             tabPress: event => {
-              event.preventDefault();
-              ConstatsApp.authIs
-                ? navigation.navigate('MainPageScreen')
-                : navigation.navigate('ProfileScreen');
+              if (!ConstatsApp.authIs) {
+                event.preventDefault();
+                navigation.navigate('ProfileScreen');
+              }
             },
           }}
         />

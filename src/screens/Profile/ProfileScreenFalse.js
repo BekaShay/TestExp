@@ -4,10 +4,11 @@ import SwichButtonComponent from '../../components/SwichButtonComponent';
 import LogInView from './LogInView';
 import SignInView from './SignInView';
 
-const ProfileScreen = () => {
+const ProfileScreenFalse = () => {
   const [loginOrSignin, setLoginOrSignin] = useState(true);
 
   return (
+    
     <View style={styles.mainScreenBackView}>
       <SwichButtonComponent
         firstText="Вход"
@@ -17,10 +18,11 @@ const ProfileScreen = () => {
       />
       {(loginOrSignin?<SignInView />:<LogInView/>)}      
     </View>
+
   );
 };
 
-export default ProfileScreen;
+export default ProfileScreenFalse;
 
 const styles = StyleSheet.create({
   mainScreenBackView: {

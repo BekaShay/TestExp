@@ -1,10 +1,12 @@
 import React from "react";
 import { CatalogLogo, MainLogo, MyBooksLogo, ProfileLogo, BascetLogo } from "../assets/svgIcons";
+import ConstatsApp from "../ConstatsApp";
 import BascetScreen from "../screens/BascetScreen";
 import CatalogScreen from "../screens/CatalogScreen";
-import MainPageScreen from "../screens/MainPageScreen";
+import MainPageScreen from "../screens/mainPage/MainPageScreen";
 import MyBooksScreen from "../screens/MyBooksScreen";
-import ProfileScreen from "../screens/Profile/ProfileScreen";
+import ProfileScreenFalse from "../screens/Profile/ProfileScreenFalse";
+import ProfileScreenTrue from "../screens/Profile/ProfileScreenTrue";
 
 const BottomBarsList = [
     {
@@ -37,7 +39,7 @@ const BottomBarsList = [
     },
     {
         name: 'ProfileScreen',
-        component: ProfileScreen,
+        component: ConstatsApp.authIs?ProfileScreenTrue:ProfileScreenFalse,
         title: 'Профиль',
         logoTrue: <ProfileLogo focused={true}/>,
         logoFalse: <ProfileLogo/>,
