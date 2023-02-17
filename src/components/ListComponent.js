@@ -9,8 +9,8 @@ const ListComponent = ({dataTemp=null, status=null}) => {
           {status}
           <Image style={{height: '100%', width: '100%',}} source={{uri: item.imageUrl}} />
         </View>
-        <Text style={styles.ItemAuthor}>{item.author}</Text>
-        <Text style={styles.ItemText}>{item.text}</Text>
+        <Text style={styles.ItemAuthor} >{item.author}</Text>
+        <Text style={styles.ItemText} numberOfLines={3}>{item.text}</Text>
       </View>
     );
   };
@@ -53,5 +53,6 @@ const styles = StyleSheet.create({
   },
   ItemText: {
     fontSize: 15,
+    width: 120,
   },
 });

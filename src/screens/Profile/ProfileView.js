@@ -11,10 +11,9 @@ const ProfileView = ({name = '', email = ''}) => {
           <Text style={styles.ProfileShortInfo}>{email}</Text>
         </View>
         <View style={styles.EditProfile}>
-            <EditProfileLogo/>
+            <Text style={styles.EditProfileText}>{'>'}</Text>
         </View>
       </View>
-    
   );
 };
 
@@ -22,34 +21,44 @@ export default ProfileView;
 
 const styles = StyleSheet.create({
   ProfileView: {
-    // backgroundColor: 'blue',
     width: '100%',
-    height: 100,
+    height: 79,
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 16,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#0000001A'
   },
   ProfileAvatar: {
     backgroundColor: 'green',
-    height: 80,
-    width: 80,
-    borderRadius: 40,
+    height: 56,
+    width: 56,
+    borderRadius: 28,
   },
   ProfileInfo: {
     // backgroundColor: 'red',
     height: '100%',
     flex: 1,
     justifyContent: 'center',
-    paddingLeft: 16,
+    paddingLeft: 15,
   },
   ProfileName: {
-    fontSize: 20,
+    fontSize: 17,
   },
   ProfileShortInfo: {
     fontSize: 14,
-    opacity: 0.55,
+    color: '#BCBCBC',
+    marginTop: 6,    
   },
   EditProfile: {
-    height: 40,
-    width: 40,
+    // backgroundColor: 'green',
+    height: 20,
+    width: 20,
+    marginRight: 4,
+  },
+  EditProfileText: {
+    color: '#808191',
+    fontSize: 20,
+    alignSelf: 'center',    
   },
 });

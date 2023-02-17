@@ -2,16 +2,15 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import ListComponent from '../../components/ListComponent';
 import dataTemp from '../../data/Data';
-import CarouselComponent from './CarouselComponent';
 import NewItem from '../../components/ItemStatuses';
+import CarouselComponent from '../../components/carousel/CarouselComponent';
 
 const MainPageScreen = () => {
   return (
     <View style={styles.mainScreenBackView}>
-      <CarouselComponent />
+      <CarouselComponent item={dataTemp}/>
       <Text style={styles.H1}>Новинки</Text>
       <ListComponent dataTemp={dataTemp}/>
-      {/* <NewItem/> */}
       
     </View>
   );
