@@ -7,10 +7,10 @@ import ConstatsApp from '../ConstatsApp';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigate = ({navigation}) => {
+const TabNavigate = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={() => ({
         headerShown: true,
         tabBarStyle: [null],
         tabBarActiveTintColor: ConstatsApp.mainColor,

@@ -1,7 +1,7 @@
 import React from "react";
 import { CatalogLogo, MainLogo, MyBooksLogo, ProfileLogo, BascetLogo } from "../assets/svgIcons";
 import ConstatsApp from "../ConstatsApp";
-import BascetScreen from "../screens/BascetScreen";
+import BascetScreen from "../screens/bascet/BascetScreen";
 import CatalogScreen from "../screens/CatalogScreen";
 import MainPageScreen from "../screens/mainPage/MainPageScreen";
 import MyBooksScreen from "../screens/MyBooksScreen";

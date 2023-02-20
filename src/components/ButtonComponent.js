@@ -27,7 +27,7 @@ export default ButtonComponent;
 const styles = StyleSheet.create({
   ButtonBackground: {
     height: 52,
-    width: 345,
+    width: "100%",
     borderRadius: 4,
     alignSelf: 'center',
     alignItems: 'center',

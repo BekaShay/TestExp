@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import ExitModalComponent from '../../components/ExitModalComponent';
 import OurContactsComponent from '../../components/OurContactsComponent';
 import ProfileButton from '../../components/ProfileButton';
 import SwichButtonComponent from '../../components/SwichButtonComponent';
 import TariffComponent from '../../components/TariffComponent';
+import InformationButton from '../Information/InformationButton';
 
 
-const ProfileScreenTrue = () => {
+const ProfileScreenTrue = ({navigation}) => {
   
-
+  const [exitVisible, setExitVisible] = useState(false);
   const [isLocalization, setIsLocalization] = useState(true);
 
   return <>
+    <ExitModalComponent modalVisible={exitVisible} setModalVisible={setExitVisible}/>
     <ScrollView style={styles.scrollView}>
     <SwichButtonComponent
         styleBackView={styles.switchButton}
@@ -20,13 +23,14 @@ const ProfileScreenTrue = () => {
         focus={isLocalization}
         setFocus={setIsLocalization}
       />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('EditProfileScreen')}>
         <ProfileButton/>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <TariffComponent/>
+      <TouchableOpacity onPress={() => navigation.navigate('TariffScreen')}>
+        <TariffComponent isButton/>
       </TouchableOpacity>
       <Text style={styles.title}>Навигация</Text>
+      <InformationButton navigation = {navigation} modalVisible={exitVisible} setModalVisible={setExitVisible}/>
     </ScrollView>
     <OurContactsComponent/>
   </>

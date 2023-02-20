@@ -3,6 +3,9 @@ import { StyleSheet, View } from "react-native";
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import TabNavigate from "./src/BottomBar/TabNavigate";
+import InformationScreen from "./src/screens/Information/ InformationScreen";
+import TariffScreen from "./src/screens/TariffScreen";
+import EditProfileScreen from "./src/screens/Profile/EditProfileScreen";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +18,21 @@ const App = () => {
             name="TabNavigate"
             component={TabNavigate}
             options={{headerShown: false}}
+            />
+            <Stack.Screen
+            name="InformationScreen"
+            component={InformationScreen}
+            // options={{headerShown: true}}
+            />
+            <Stack.Screen
+            name="TariffScreen"
+            component={TariffScreen}
+            // options={{headerShown: true}}
+            />
+            <Stack.Screen
+            name="EditProfileScreen"
+            component={EditProfileScreen}
+            // options={{headerShown: true}}
             />
         </Stack.Navigator>
     </NavigationContainer>

@@ -1,5 +1,5 @@
 const ConstatsApp = {
-    mainColor: 'green',
+    mainColor: '#8D2976',
     authIs: true,
 };
 

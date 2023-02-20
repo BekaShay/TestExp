@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { CreditCardsLogo, NextLogo } from '../assets/svgIcons'
 
-const TariffComponent = ({title='Тариф высший оформлен', text = 'осталось 6 дней (6 месяцев)'}) => {
+const TariffComponent = ({title='Оформить подписку', text = null, isButton=false}) => {
   return (
     <View style={styles.tariffView}>
         <View style={styles.logo}>
@@ -10,9 +10,9 @@ const TariffComponent = ({title='Тариф высший оформлен', text
         </View>
         <View style={styles.textView}>
             <Text style={styles.title}>{title}</Text>
-            <Text style={styles.text}>{text}</Text>
+            {text?<Text style={styles.text}>{text}</Text>:null}
         </View>
-        <NextLogo/>
+        {isButton?<NextLogo/>:null}
     </View>
   )
 }
