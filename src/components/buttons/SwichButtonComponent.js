@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import ConstatsApp from '../ConstatsApp';
+import ConstatsApp from '../../constants/ConstatsApp';
 
 const SwichButtonComponent = ({
   styleBackView = null,

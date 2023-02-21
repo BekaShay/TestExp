@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { CreditCardsLogo, NextLogo } from '../assets/svgIcons'
+import { CreditCardsLogo, NextLogo } from '../assets/icons/svgIcons'
+import ConstatsApp from '../constants/ConstatsApp'
 
 const TariffComponent = ({title='Оформить подписку', text = null, isButton=false}) => {
   return (
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 17,
-        color: '#8D2976',
+        color: ConstatsApp.mainColor,
     },
     text: {
         fontSize: 15,

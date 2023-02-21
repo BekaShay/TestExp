@@ -1,6 +1,6 @@
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import { MessageLogo, WhatsAppLogo } from '../assets/svgIcons';
+import { MessageLogo, WhatsAppLogo } from '../assets/icons/svgIcons';
 
 const OurContactsComponent = () => {
   return (

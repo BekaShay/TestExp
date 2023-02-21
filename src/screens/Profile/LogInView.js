@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import ButtonComponent from '../../components/ButtonComponent';
+import ButtonComponent from '../../components/buttons/ButtonComponent';
 import TextInputComponent from '../../components/TextInputComponent';
-import ConstatsApp from '../../ConstatsApp';
+import ConstatsApp from '../../constants/ConstatsApp';
 
 const LogInView = () => {
   const [email, setEmail] = useState('');

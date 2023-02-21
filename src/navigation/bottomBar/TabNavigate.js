@@ -1,9 +1,11 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MainPageScreen from '../screens/mainPage/MainPageScreen';
+import MainPageScreen from '../../screens/mainPage/MainPageScreen';
 import BottomBarsList from './BottomBarsList';
-import MainLogo from '../assets/svgIcons';
-import ConstatsApp from '../ConstatsApp';
+import MainLogo, {CategoryLogo, SearchLogo} from '../../assets/icons/svgIcons';
+import ConstatsApp from '../../constants/ConstatsApp';
+import TabBarButtonComponent from '../../components/buttons/TabBarButtonComponent';
+import { ScreenStackHeaderLeftView } from 'react-native-screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,14 +18,11 @@ const TabNavigate = () => {
         tabBarActiveTintColor: ConstatsApp.mainColor,
         tabBarinactiveTintColor: '#C1CBD7',
         tabBarLabelStyle: [null],
-        // headerStyle: {
-        //   height:
-        // }
       })}>
-      {BottomBarsList.map(param => (
+      {BottomBarsList.map((param, index) => (
         <Tab.Screen
-          name={param.name}
-          component={param.component}
+          key={index}
+          {...param}
           options={{
             title: param.title,
             tabBarIcon: ({focused, size, color}) => {
@@ -32,6 +31,18 @@ const TabNavigate = () => {
               } else {
                 return param.logoFalse;
               }
+            },
+            headerRight: () => {
+              if (param.name != 'ProfileScreen')
+                return (
+                  <TabBarButtonComponent Logo={<SearchLogo />} Event={null} />
+                );
+            },
+            headerLeft: () => {
+              if (param.name != 'ProfileScreen')
+                return (
+                  <TabBarButtonComponent Logo={<CategoryLogo />} Event={null} />
+                );
             },
           }}
           listeners={{

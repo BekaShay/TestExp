@@ -1,6 +1,6 @@
 import React from 'react';
 import {Svg, Path, G, Rect, Defs, Pattern, Use, Image} from 'react-native-svg';
-import ConstatsApp from '../ConstatsApp';
+import ConstatsApp from '../../constants/ConstatsApp';
 
 export const MainLogo = ({focused = false}) => {
   var color = focused ? ConstatsApp.mainColor : '#909090';
@@ -218,7 +218,7 @@ export const CreditCardsLogo = () => {
       xmlns="http://www.w3.org/2000/svg">
       <Path
         d="M11.3274 6.59923H4.79232C3.25071 6.59923 2 7.84994 2 9.39155V26.2092C2 27.7493 3.25071 29 4.79232 29H15.9103C17.4519 29 18.7026 27.7493 18.7026 26.2077V25.0208M13.5115 23.6176L19.2983 1.99462M10.237 22.7402L20.3624 25.4688C22.0254 25.9168 23.735 24.929 24.1783 23.266L28.3411 7.64149C28.7798 5.99254 27.792 4.28137 26.1446 3.83647L16.0192 1.10793C14.3562 0.659913 12.6466 1.64772 12.2033 3.31067L8.04045 18.9352C7.60021 20.5919 8.5818 22.2938 10.237 22.7402Z"
-        stroke="#8D2976"
+        stroke={ConstatsApp.mainColor}
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -491,6 +491,39 @@ export const CloseLogo = () => {
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
+      />
+    </Svg>
+  );
+};
+
+export const SearchLogo = () => {
+  return (
+    <Svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <Path
+        d="M16.0319 14.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0976 20.6834 22.0976 20.2929 21.7071L14.6177 16.0319C13.078 17.2635 11.125 18 9 18C4.02944 18 0 13.9706 0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9C18 11.125 17.2635 13.078 16.0319 14.6177ZM9 16C12.866 16 16 12.866 16 9C16 5.13401 12.866 2 9 2C5.13401 2 2 5.13401 2 9C2 12.866 5.13401 16 9 16Z"
+        fill="#909090"
+      />
+    </Svg>
+  );
+};
+
+export const CategoryLogo = () => {
+  return (
+    <Svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <Path
+        d="M1 3C1 1.89543 1.89543 1 3 1H7C8.10457 1 9 1.89543 9 3V7C9 8.10457 8.10457 9 7 9H3C1.89543 9 1 8.10457 1 7V3ZM13 3C13 1.89543 13.8954 1 15 1H19C20.1046 1 21 1.89543 21 3V7C21 8.10457 20.1046 9 19 9H15C13.8954 9 13 8.10457 13 7V3ZM1 15C1 13.8954 1.89543 13 3 13H7C8.10457 13 9 13.8954 9 15V19C9 20.1046 8.10457 21 7 21H3C1.89543 21 1 20.1046 1 19V15ZM13 15C13 13.8954 13.8954 13 15 13H19C20.1046 13 21 13.8954 21 15V19C21 20.1046 20.1046 21 19 21H15C13.8954 21 13 20.1046 13 19V15Z"
+        stroke="#919191"
+        stroke-width="2"
       />
     </Svg>
   );

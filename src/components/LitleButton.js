@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import ConstatsApp from '../ConstatsApp';
+import ConstatsApp from '../constants/ConstatsApp';
 
 const LitleButton = ({
   buttonText = 'Enter',

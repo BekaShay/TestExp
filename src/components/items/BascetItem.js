@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React, {useState} from 'react';
-import {CloseLogo, PCLogo} from '../../assets/svgIcons';
+import {CloseLogo, PCLogo} from '../../assets/icons/svgIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import LitleButton from '../../components/LitleButton';
-import CountButtonComponent from '../../components/CountButtonComponent';
+import LitleButton from '../LitleButton';
+import CountButtonComponent from '../buttons/CountButtonComponent';
 
 const BascetItem = () => {
   const [count, setCount] = useState(1);
@@ -22,9 +22,9 @@ const BascetItem = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.textView}>
-        <Text style={styles.text}>TempText:</Text>
-        <Text style={styles.text}>TempText:</Text>
-        <Text style={styles.text}>TempText:</Text>
+        <Text style={styles.text}>Количество страниц: </Text>
+        <Text style={styles.text}>ISBN: </Text>
+        <Text style={styles.text}>Год выпуска: </Text>
       </View>
       <View style={styles.buttonsView}>
         <CountButtonComponent count={count} setCount={setCount} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import { EditProfileLogo } from '../../assets/svgIcons';
+import { EditProfileLogo } from '../../assets/icons/svgIcons';
 
 const ProfileView = ({name = '', email = ''}) => {
   return (

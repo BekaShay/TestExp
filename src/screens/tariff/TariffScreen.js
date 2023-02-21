@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
-import TariffComponent from '../components/TariffComponent';
-import {TariffLogo} from '../assets/svgIcons';
+import TariffComponent from '../../components/TariffComponent';
+import {TariffLogo} from '../../assets/icons/svgIcons';
 
 const tempData = [
   {

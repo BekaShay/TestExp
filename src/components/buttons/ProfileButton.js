@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-import {NextLogo} from '../assets/svgIcons';
+import { NextLogo } from '../../assets/icons/svgIcons';
 
 const ProfileButton = ({
   title = 'Beka Shaymov',

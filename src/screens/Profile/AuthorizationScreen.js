@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import SwichButtonComponent from '../../components/SwichButtonComponent';
+import SwichButtonComponent from '../../components/buttons/SwichButtonComponent';
 import LogInView from './LogInView';
 import SignInView from './SignInView';
 
-const ProfileScreenFalse = () => {
+const AuthorizationScreen = () => {
   const [loginOrSignin, setLoginOrSignin] = useState(true);
 
-  return (
-    
+  return ( 
     <View style={styles.mainScreenBackView}>
       <SwichButtonComponent
         firstText="Вход"
@@ -22,7 +21,7 @@ const ProfileScreenFalse = () => {
   );
 };
 
-export default ProfileScreenFalse;
+export default AuthorizationScreen;
 
 const styles = StyleSheet.create({
   mainScreenBackView: {

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import ExitModalComponent from '../../components/ExitModalComponent';
+import ExitModalComponent from '../../components/modal/ExitModalComponent';
 import OurContactsComponent from '../../components/OurContactsComponent';
-import ProfileButton from '../../components/ProfileButton';
-import SwichButtonComponent from '../../components/SwichButtonComponent';
+import ProfileButton from '../../components/buttons/ProfileButton';
+import SwichButtonComponent from '../../components/buttons/SwichButtonComponent';
 import TariffComponent from '../../components/TariffComponent';
 import InformationButton from '../Information/InformationButton';
 

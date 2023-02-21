@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, {useEffect} from 'react'
-import { BackLogo, NextLogo } from '../../assets/svgIcons';
+import { BackLogo, NextLogo } from '../../assets/icons/svgIcons';
 
 const  InformationScreen = ({route, navigation}) => {
   const {name, text } = route.params;

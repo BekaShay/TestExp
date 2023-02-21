@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {NextLogo} from '../../assets/svgIcons';
+import {NextLogo} from '../../assets/icons/svgIcons';
 import {InformationList} from './InformationList';
 
 const InformationButton = ({navigation, modalVisible=false, setModalVisible=null}) => {

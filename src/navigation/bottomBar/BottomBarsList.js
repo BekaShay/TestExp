@@ -1,12 +1,12 @@
 import React from "react";
-import { CatalogLogo, MainLogo, MyBooksLogo, ProfileLogo, BascetLogo } from "../assets/svgIcons";
-import ConstatsApp from "../ConstatsApp";
-import BascetScreen from "../screens/bascet/BascetScreen";
-import CatalogScreen from "../screens/CatalogScreen";
-import MainPageScreen from "../screens/mainPage/MainPageScreen";
-import MyBooksScreen from "../screens/MyBooksScreen";
-import ProfileScreenFalse from "../screens/Profile/ProfileScreenFalse";
-import ProfileScreenTrue from "../screens/Profile/ProfileScreenTrue";
+import { CatalogLogo, MainLogo, MyBooksLogo, ProfileLogo, BascetLogo } from "../../assets/icons/svgIcons";
+import ConstatsApp from "../../constants/ConstatsApp";
+import BascetScreen from "../../screens/bascet/BascetScreen";
+import CatalogScreen from "../../screens/catalog/CatalogScreen";
+import MainPageScreen from "../../screens/mainPage/MainPageScreen";
+import MyBooksScreen from "../../screens/myBooks/MyBooksScreen";
+import AuthorizationScreen from "../../screens/profile/AuthorizationScreen";
+import ProfileScreenTrue from "../../screens/profile/ProfileScreenTrue";
 
 const BottomBarsList = [
     {
@@ -39,7 +39,7 @@ const BottomBarsList = [
     },
     {
         name: 'ProfileScreen',
-        component: ConstatsApp.authIs?ProfileScreenTrue:ProfileScreenFalse,
+        component: ConstatsApp.authIs?ProfileScreenTrue:AuthorizationScreen,
         title: 'Профиль',
         logoTrue: <ProfileLogo focused={true}/>,
         logoFalse: <ProfileLogo/>,

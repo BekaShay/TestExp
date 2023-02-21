@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const CountButtonComponent = ({count = 0, setCount = null}) => {
+const CountButtonComponent = ({count = 1, setCount = null}) => {
   const plus = () => setCount(count + 1);
-  const minus = () => (count ? setCount(count - 1) : null);
+  const minus = () => (count - 1 ? setCount(count - 1) : null);
   return (
     <View style={styles.countView}>
       <TouchableOpacity style={styles.buttonView}

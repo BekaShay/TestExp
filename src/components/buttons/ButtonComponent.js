@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import ConstatsApp from '../ConstatsApp';
+import ConstatsApp from '../../constants/ConstatsApp';
 
 const ButtonComponent = ({
   buttonText = '',

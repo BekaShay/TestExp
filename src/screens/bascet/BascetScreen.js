@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {LikeLogo} from '../../assets/svgIcons';
-import LogoTextButton from '../../components/LogoTextButton';
-import BascetItem from './BascetItem';
+import {LikeLogo} from '../../assets/icons/svgIcons';
+import LogoTextButton from '../../components/buttons/LogoTextButton';
+import BascetItem from '../../components/items/BascetItem';
 
 const BascetScreen = () => {
   return (

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { NextLogo } from '../assets/svgIcons'
+import { NextLogo } from '../../assets/icons/svgIcons'
 
 const LogoTextButton = ({Logo=null, Event=null}) => {
   return (
