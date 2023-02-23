@@ -3,7 +3,7 @@ import React from 'react'
 
 const TabBarButtonComponent = ({Event=null, Logo=null}) => {
   return (
-    <TouchableOpacity style={styles.TabBarView} onPress={() => Event}>
+    <TouchableOpacity style={styles.TabBarView} onPress={Event}>
         {Logo}
     </TouchableOpacity>
   )

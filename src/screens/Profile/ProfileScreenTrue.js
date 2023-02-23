@@ -7,11 +7,12 @@ import SwichButtonComponent from '../../components/buttons/SwichButtonComponent'
 import TariffComponent from '../../components/TariffComponent';
 import InformationButton from '../Information/InformationButton';
 
-
 const ProfileScreenTrue = ({navigation}) => {
   
   const [exitVisible, setExitVisible] = useState(false);
   const [isLocalization, setIsLocalization] = useState(true);
+
+  
 
   return <>
     <ExitModalComponent modalVisible={exitVisible} setModalVisible={setExitVisible}/>

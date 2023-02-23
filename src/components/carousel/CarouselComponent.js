@@ -1,31 +1,36 @@
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
-import React from 'react'
-import { FlatList } from 'react-native-gesture-handler'
+import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
+import React from 'react';
+import {FlatList} from 'react-native-gesture-handler';
+import FastImage from 'react-native-fast-image';
 
 const {height, width} = Dimensions.get('window');
 
 const CarouselComponent = ({item}) => {
-
   const renderItem = ({item}) => {
-    return (<View style={styles.itemContainer}>
-      <Image style={styles.itemImage} source={{uri: item.imageUrl}}/>
-    </View>);
-  }
+    return (
+      <View style={styles.itemContainer}>
+        <FastImage
+          style={[styles.itemImage, {priority: FastImage.priority.normal}]}
+          source={{uri: item.slider_image}}
+        />
+      </View>
+    );
+  };
 
   return (
     <View style={styles.carouselView}>
-        <FlatList
+      <FlatList
         data={item}
         renderItem={renderItem}
         horizontal
-        snapToAlignment='center'
+        snapToAlignment="center"
         pagingEnabled
-        />
+      />
     </View>
-  )
-}
+  );
+};
 
-export default CarouselComponent
+export default CarouselComponent;
 
 const styles = StyleSheet.create({
   carouselView: {
@@ -41,4 +46,4 @@ const styles = StyleSheet.create({
     height: 160,
     width: width,
   },
-})
+});

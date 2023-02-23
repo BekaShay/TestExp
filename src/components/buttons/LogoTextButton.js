@@ -4,7 +4,7 @@ import { NextLogo } from '../../assets/icons/svgIcons'
 
 const LogoTextButton = ({Logo=null, Event=null}) => {
   return (
-    <TouchableOpacity style={styles.backView} onPress={() => Event}>
+    <TouchableOpacity style={styles.backView} onPress={Event}>
         {Logo?<Logo/>:null}
         <Text style={styles.text}>Избранные</Text>
         <NextLogo/>

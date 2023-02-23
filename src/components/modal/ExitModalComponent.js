@@ -3,6 +3,7 @@ import {Modal, StyleSheet, Text, View} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ExitModalComponent = ({modalVisible = true, Event=null, setModalVisible=null}) => {
+  
   return (
     <Modal style={{position: 'absolute'}} animationType='fade' visible={modalVisible}>
       <View  style={styles.modal}>

@@ -6,6 +6,10 @@ import TabNavigate from '../bottomBar/TabNavigate';
 import InformationScreen from '../../screens/Information/ InformationScreen';
 import TariffScreen from '../../screens/tariff/TariffScreen';
 import EditProfileScreen from '../../screens/profile/EditProfileScreen';
+import CategoryScreen from '../../screens/category/CategoryScreen';
+import SearchScreen from '../../screens/search/SearchScreen';
+import FavoritesScreen from '../../screens/favorites/FavoritesScreen';
+import ArticlesScreen from '../../screens/articles/ArticlesScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +26,10 @@ const Navigation = () => {
         <Stack.Screen name="InformationScreen" component={InformationScreen} />
         <Stack.Screen name="TariffScreen" component={TariffScreen} />
         <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+        <Stack.Screen name="CategoryScreen" component={CategoryScreen} />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
+        <Stack.Screen name="ArticlesScreen" component={ArticlesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,7 @@
 import React from "react";
+import { View } from "react-native";
 import { CatalogLogo, MainLogo, MyBooksLogo, ProfileLogo, BascetLogo } from "../../assets/icons/svgIcons";
+import BascetCount from "../../components/markers/BascetCount";
 import ConstatsApp from "../../constants/ConstatsApp";
 import BascetScreen from "../../screens/bascet/BascetScreen";
 import CatalogScreen from "../../screens/catalog/CatalogScreen";
@@ -34,8 +36,8 @@ const BottomBarsList = [
         name: 'BascetScreen',
         component: BascetScreen,
         title: 'Корзина',
-        logoTrue: <BascetLogo focused={true}/>,
-        logoFalse: <BascetLogo/>,
+        logoTrue: <View><BascetLogo focused={true}/><BascetCount/></View>,
+        logoFalse: <View><BascetLogo/><BascetCount/></View>,
     },
     {
         name: 'ProfileScreen',

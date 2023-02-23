@@ -9,7 +9,7 @@ import { ScreenStackHeaderLeftView } from 'react-native-screens';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigate = () => {
+const TabNavigate = ({navigation}) => {
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -25,6 +25,7 @@ const TabNavigate = () => {
           {...param}
           options={{
             title: param.title,
+            
             tabBarIcon: ({focused, size, color}) => {
               if (focused) {
                 return param.logoTrue;
@@ -35,13 +36,13 @@ const TabNavigate = () => {
             headerRight: () => {
               if (param.name != 'ProfileScreen')
                 return (
-                  <TabBarButtonComponent Logo={<SearchLogo />} Event={null} />
+                  <TabBarButtonComponent Logo={<SearchLogo />} Event={() => navigation.navigate('SearchScreen')} />
                 );
             },
             headerLeft: () => {
               if (param.name != 'ProfileScreen')
                 return (
-                  <TabBarButtonComponent Logo={<CategoryLogo />} Event={null} />
+                  <TabBarButtonComponent Logo={<CategoryLogo />} Event={() => navigation.navigate('CategoryScreen')} />
                 );
             },
           }}
