@@ -6,3 +6,9 @@ export class MainController {
     return await API.get(URLS.API.MAIN, params);
   };
 }
+
+export class ArticlesController {
+  static get = async params => {
+    return await API.get(URLS.API.ARTICLE, params);
+  };
+}

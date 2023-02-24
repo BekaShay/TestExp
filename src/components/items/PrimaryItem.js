@@ -3,6 +3,7 @@ import React from 'react';
 import {InBascetLogo, IsLikeLogo} from '../../assets/icons/svgIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import ConstatsApp from '../../constants/ConstatsApp';
+import FastImage from 'react-native-fast-image';
 
 const PrimaryItem = ({
   item,
@@ -37,7 +38,7 @@ const PrimaryItem = ({
         {logoStatus}
         {isLike ? <IsLikeFun /> : null}
       </View>
-      <Image style={styles.image} source={{uri: item?.book_image}} />
+      <FastImage style={styles.image} source={{uri: item?.book_image}} />
       <View style={styles.priceView}>
         <Text style={styles.price}>{item?.paperbook_price}</Text>
         {item.pay_type == 'buy' ? <IsBuyFun /> : null}

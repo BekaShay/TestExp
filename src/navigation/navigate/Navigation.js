@@ -10,6 +10,7 @@ import CategoryScreen from '../../screens/category/CategoryScreen';
 import SearchScreen from '../../screens/search/SearchScreen';
 import FavoritesScreen from '../../screens/favorites/FavoritesScreen';
 import ArticlesScreen from '../../screens/articles/ArticlesScreen';
+import ArticleItemScreen from '../../screens/articles/ArticleItemScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ const Navigation = () => {
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
         <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
         <Stack.Screen name="ArticlesScreen" component={ArticlesScreen} />
+        <Stack.Screen name="ArticleItemScreen" component={ArticleItemScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

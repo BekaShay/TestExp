@@ -2,10 +2,11 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
 
-const ArticlesItem = ({item, isPage = false}) => {
+const ArticlesItem = ({item, isPage = false, Event = null}) => {
     const width = isPage? '100%': 250;
+    // console.log('Navig: ',navigation);
   return (
-    <TouchableOpacity style={[styles.view, {width: width}]}>
+    <TouchableOpacity style={[styles.view, {width: width}]} onPress={Event}>
       <FastImage style={styles.image} source={{uri: item.image}} />
       <Text style={styles.title} numberOfLines={3}>
         {item.title}
@@ -21,7 +22,7 @@ export default ArticlesItem;
 
 const styles = StyleSheet.create({
   view: {
-    height: 280,
+    height: 320,
     borderRadius: 6,
     elevation: 10,
     shadowColor: '#000000',

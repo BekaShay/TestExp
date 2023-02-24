@@ -13,6 +13,7 @@ const ProfileScreenTrue = ({navigation}) => {
   const [isLocalization, setIsLocalization] = useState(true);
 
   
+  
 
   return <>
     <ExitModalComponent modalVisible={exitVisible} setModalVisible={setExitVisible}/>
