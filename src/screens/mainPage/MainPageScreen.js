@@ -75,7 +75,7 @@ const MainPageScreen = ({navigation}) => {
         <ArticlesButton Event={() => navigation.navigate('ArticlesScreen')}/>
         <FlatList
         data={data.articles}
-        renderItem={({item}) => <ArticlesItem item={item} Event={() => navigation.navigate('ArticleItemScreen', {item: item})}/>}
+        renderItem={({item}) => <ArticlesItem item={item} Event={() => navigation.navigate('ArticleItemScreen', {item: item.id})}/>}
         horizontal
         />
       </ScrollView>

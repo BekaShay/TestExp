@@ -545,8 +545,8 @@ export const InBascetLogo = () => {
   );
 };
 
-export const IsLikeLogo = ({isLike=false}) => {
-  const color = isLike?'#FFFFFF': 'none';
+export const IsLikeLogo = ({isLike = false}) => {
+  const color = isLike ? '#FFFFFF' : 'none';
   return (
     <Svg
       width="18"
@@ -562,6 +562,22 @@ export const IsLikeLogo = ({isLike=false}) => {
         stroke="white"
         stroke-linecap="round"
         stroke-linejoin="round"
+      />
+    </Svg>
+  );
+};
+
+export const FragmentBook = () => {
+  return (
+    <Svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <Path
+        d="M9 2.83202L15.379 0.919108C16.7674 0.502654 18 1.41697 18 2.86761V12.2738C18 13.5396 17.0611 14.7996 15.849 15.1632L9.25936 17.1392C9.09116 17.1962 8.90884 17.1962 8.74064 17.1392L2.151 15.1632C0.938864 14.8 0 13.54 0 12.2742V2.86802C0 1.41697 1.23259 0.502654 2.62105 0.919108L9 2.83202ZM2.151 2.48634C1.81145 2.38447 1.63636 2.51415 1.63636 2.86802V12.2742C1.63636 12.8171 2.10068 13.4402 2.62105 13.5964L8.18182 15.2639V4.29534L2.151 2.48634ZM15.379 13.5964C15.8993 13.4402 16.3636 12.8167 16.3636 12.2742V2.86802C16.3636 2.51415 16.1885 2.38447 15.849 2.48634L9.81818 4.29493V15.2639L15.379 13.5964Z"
+        fill="#8D2976"
       />
     </Svg>
   );

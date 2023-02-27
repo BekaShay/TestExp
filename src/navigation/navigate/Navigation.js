@@ -11,6 +11,7 @@ import SearchScreen from '../../screens/search/SearchScreen';
 import FavoritesScreen from '../../screens/favorites/FavoritesScreen';
 import ArticlesScreen from '../../screens/articles/ArticlesScreen';
 import ArticleItemScreen from '../../screens/articles/ArticleItemScreen';
+import BookDetailScreen from '../../screens/book/BookDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name='BookDetailScreen' component={BookDetailScreen}/>
         <Stack.Screen
           name="TabNavigate"
           component={TabNavigate}

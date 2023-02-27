@@ -15,7 +15,7 @@ const ArticlesScreen = ({navigation}) => {
       const data = response.data;
       setData(data);
       setloading(false);
-      console.log(data.collections[0].books);
+      // console.log(data.collections[0].books);
     } catch (error) {
       console.error(error);
       setloading(false);
@@ -48,7 +48,7 @@ const ArticlesScreen = ({navigation}) => {
       <View style={styles.view}>
         <FlatList
           data={data.data}
-          renderItem={({item}) => <ArticlesItem item={item} isPage Event={() => navigation.navigate('ArticleItemScreen')}/>}
+          renderItem={({item}) => <ArticlesItem item={item} isPage Event={() => navigation.navigate('ArticleItemScreen', {id: item.id})}/>}
           keyExtractor={item => item.id}
         />
       </View>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   view: {
     height: '100%',
     width: '100%',
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
     paddingRight: 10,
   },
 });
