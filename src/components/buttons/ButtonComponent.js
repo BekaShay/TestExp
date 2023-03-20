@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import ConstatsApp from '../../constants/ConstatsApp';
 
 const ButtonComponent = ({
@@ -7,17 +7,16 @@ const ButtonComponent = ({
   buttonStyle = null,
   buttonColor = ConstatsApp.mainColor,
   buttonTextColor = '#FFFFFF',
+  isBold = false
+
 }) => {
   return (
-    <TouchableOpacity>
-      <View
-        style={[
-          styles.ButtonBackground,
-          buttonStyle,
-          {backgroundColor: buttonColor},
-        ]}>
-        <Text style={[styles.ButtonText,{color: buttonTextColor}]}>{buttonText}</Text>
-      </View>
+    <TouchableOpacity style={[
+      styles.ButtonBackground,
+      buttonStyle,
+      {backgroundColor: buttonColor},
+    ]}>
+        <Text style={[styles.ButtonText,{color: buttonTextColor, fontWeight: isBold? 'bold': 'normal'}]}>{buttonText}</Text>
     </TouchableOpacity>
   );
 };
@@ -35,6 +34,5 @@ const styles = StyleSheet.create({
   },
   ButtonText: {
     fontSize: 17,
-    lineHeight: 17,
   },
 });

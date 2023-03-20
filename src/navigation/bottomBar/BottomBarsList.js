@@ -4,7 +4,8 @@ import { CatalogLogo, MainLogo, MyBooksLogo, ProfileLogo, BascetLogo } from "../
 import BascetCount from "../../components/markers/BascetCount";
 import ConstatsApp from "../../constants/ConstatsApp";
 import BascetScreen from "../../screens/bascet/BascetScreen";
-import CatalogScreen from "../../screens/catalog/CatalogScreen";
+import MySubscriptionsScreen from "../../screens/catalog/MySubscriptionsScreen";
+import CatalogScreen from "../../screens/catalog/MySubscriptionsScreen";
 import MainPageScreen from "../../screens/mainPage/MainPageScreen";
 import MyBooksScreen from "../../screens/myBooks/MyBooksScreen";
 import AuthorizationScreen from "../../screens/profile/AuthorizationScreen";
@@ -18,19 +19,20 @@ const BottomBarsList = [
         logoTrue: <MainLogo focused={true}/>,
         logoFalse: <MainLogo/>,
     },
-    {
-        name: 'CatalogScreen',
-        component: CatalogScreen,
-        title: 'Каталог',
-        logoTrue: <CatalogLogo focused={true}/>,
-        logoFalse: <CatalogLogo/>,
-    },
+    
     {
         name: 'MyBooksScreen',
         component: MyBooksScreen,
         title: 'Мои Книги',
         logoTrue: <MyBooksLogo focused={true}/>,
         logoFalse: <MyBooksLogo/>,
+    },
+    {
+        name: 'MySubscriptionsScreen',
+        component: MySubscriptionsScreen,
+        title: 'Мои подписки',
+        logoTrue: <CatalogLogo focused={true}/>,
+        logoFalse: <CatalogLogo/>,
     },
     {
         name: 'BascetScreen',

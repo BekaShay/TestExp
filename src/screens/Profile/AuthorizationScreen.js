@@ -5,7 +5,7 @@ import LogInView from './LogInView';
 import SignInView from './SignInView';
 
 const AuthorizationScreen = () => {
-  const [loginOrSignin, setLoginOrSignin] = useState(true);
+  const [loginOrSignin, setLoginOrSignin] = useState(1);
 
   return ( 
     <View style={styles.mainScreenBackView}>

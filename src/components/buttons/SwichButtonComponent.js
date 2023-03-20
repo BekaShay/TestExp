@@ -5,8 +5,10 @@ import ConstatsApp from '../../constants/ConstatsApp';
 const SwichButtonComponent = ({
   styleBackView = null,
   firstButtonWidth = 141,
+  secondButtonWidth = null,
   firstText = '',
   secondText = '',
+  thirdText = '',
   focus = null,
   setFocus = null,
 }) => {
@@ -20,7 +22,7 @@ const SwichButtonComponent = ({
             backgroundColor: focus ? ConstatsApp.mainColor : '#FFFFFF',
           },
         ]}
-        onPress={() => setFocus(false)}>
+        onPress={() => setFocus(0)}>
         <Text
           style={[
             styles.TextStyle,
@@ -32,17 +34,33 @@ const SwichButtonComponent = ({
       <TouchableOpacity
         style={[
           styles.secondButton,
-          {backgroundColor: focus ? '#FFFFFF' : ConstatsApp.mainColor},
+          {backgroundColor: focus == 1 ? '#FFFFFF' : ConstatsApp.mainColor,
+          width: secondButtonWidth
+        },
         ]}
-        onPress={() => setFocus(true)}>
+        onPress={() => setFocus(1)}>
         <Text
           style={[
             styles.TextStyle,
-            {color: focus ? ConstatsApp.mainColor : '#FFFFFF'},
+            {color: focus == 1 ? ConstatsApp.mainColor : '#FFFFFF'},
           ]}>
           {secondText}
         </Text>
       </TouchableOpacity>
+      {thirdText?<TouchableOpacity
+        style={[
+          styles.secondButton,
+          {backgroundColor: focus == 2 ? '#FFFFFF' : ConstatsApp.mainColor},
+        ]}
+        onPress={() => setFocus(2)}>
+        <Text
+          style={[
+            styles.TextStyle,
+            {color: focus == 2 ? ConstatsApp.mainColor : '#FFFFFF'},
+          ]}>
+          {thirdText}
+        </Text>
+      </TouchableOpacity>: null}
     </View>
   );
 };

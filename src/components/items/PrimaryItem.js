@@ -15,6 +15,7 @@ const PrimaryItem = ({
   like = false,
   setLike = null,
   isLike = true,
+  Event=null,
 }) => {
   const IsLikeFun = () => {
     return (
@@ -33,7 +34,7 @@ const PrimaryItem = ({
   };
 
   return (
-    <TouchableOpacity style={styles.view}>
+    <TouchableOpacity style={styles.view} onPress={Event}>
       <View style={styles.logoView}>
         {logoStatus}
         {isLike ? <IsLikeFun /> : null}

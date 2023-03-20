@@ -12,6 +12,10 @@ import FavoritesScreen from '../../screens/favorites/FavoritesScreen';
 import ArticlesScreen from '../../screens/articles/ArticlesScreen';
 import ArticleItemScreen from '../../screens/articles/ArticleItemScreen';
 import BookDetailScreen from '../../screens/book/BookDetailScreen';
+import AuthorScreen from '../../screens/book/AuthorScreen';
+import PublisherScreen from '../../screens/book/PublisherScreen';
+import SeriScreen from '../../screens/book/SeriScreen';
+import CategoryDetailScreen from '../../screens/category/CategoryDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +24,6 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='BookDetailScreen' component={BookDetailScreen}/>
         <Stack.Screen
           name="TabNavigate"
           component={TabNavigate}
@@ -34,6 +37,12 @@ const Navigation = () => {
         <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
         <Stack.Screen name="ArticlesScreen" component={ArticlesScreen} />
         <Stack.Screen name="ArticleItemScreen" component={ArticleItemScreen} />
+        <Stack.Screen name="AuthorScreen" component={AuthorScreen} />
+        <Stack.Screen name="PublisherScreen" component={PublisherScreen} />
+        <Stack.Screen name="SeriScreen" component={SeriScreen} />
+        <Stack.Screen name='BookDetailScreen' component={BookDetailScreen}/>
+        <Stack.Screen name='CategoryDetailScreen' component={CategoryDetailScreen}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

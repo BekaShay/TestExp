@@ -1,27 +1,56 @@
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {NextLogo} from '../../assets/icons/svgIcons';
 import {InformationList} from './InformationList';
+import {NavigatController} from '../../api/controllers/API_Controllers';
 
-const InformationButton = ({navigation, modalVisible=false, setModalVisible=null}) => {
-  return InformationList.map(item => (
-    <TouchableOpacity
-      style={styles.buttonView}
-      onPress={() => {
-        if (item.name == 'Выйти') {
-          setModalVisible(true)  
-        } 
-        else {
-          navigation.navigate('InformationScreen', {
-            name: item.name,
-            text: item.text,
-          });
-        }
-      }}>
-      <Text style={styles.text}>{item.name}</Text>
-      <NextLogo />
-    </TouchableOpacity>
-  ));
+const InformationButton = ({
+  navigation,
+  modalVisible = false,
+  setModalVisible = () => undefined,
+}) => {
+  const [data, setData] = useState(null);
+  const [loading, setloading] = useState(true);
+
+  const getData = async () => {
+    setloading(true);
+    try {
+      const response = await NavigatController.get({
+        params: {lang: 'ru'},
+      });
+      const data = response.data;
+      setData(data);
+      setloading(false);
+      console.log('Data :        ', data?.menu);
+    } catch (error) {
+      console.error(error);
+      setloading(false);
+    }
+    setloading(false);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <>
+      {data?.menu?.map(item => (
+        <TouchableOpacity
+          style={styles.buttonView}
+          onPress={() => {
+              navigation.navigate('InformationScreen', {
+                name: item?.label,
+                link: item?.link,
+              });
+            }
+          }>
+          <Text style={styles.text}>{item?.label}</Text>
+          <NextLogo />
+        </TouchableOpacity>
+      ))}
+      <TouchableOpacity style={styles.buttonView} onPress={() => setModalVisible(true)}><Text>Выйти</Text></TouchableOpacity>
+    </>
+  );
 };
 
 export default InformationButton;

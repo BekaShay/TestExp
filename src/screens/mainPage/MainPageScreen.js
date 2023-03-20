@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import dataTemp from '../../data/Data';
 import NewItem from '../../components/ItemStatuses';
@@ -11,19 +11,18 @@ import {MainController} from '../../api/controllers/API_Controllers';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import ArticlesButton from '../articles/ArticlesButton';
 import ArticlesItem from '../../components/items/ArticlesItem';
+import HeaderTabBar from '../../components/buttons/HeaderTabBar';
 
-const MainPageScreen = ({navigation}) => {
+const MainPageView = ({paramType = null, navigation = null}) => {
   const [data, setData] = useState(null);
   const [loading, setloading] = useState(true);
-
   const getData = async () => {
     setloading(true);
     try {
-      const response = await MainController.get();
+      const response = await MainController.get({params: {type: paramType,}});
       const data = response.data;
       setData(data);
       setloading(false);
-      console.log(data.collections[0].books);
     } catch (error) {
       console.error(error);
       setloading(false);
@@ -33,6 +32,27 @@ const MainPageScreen = ({navigation}) => {
   useEffect(() => {
     getData();
   }, []);
+  console.log('Colec     ', data?.collections[0]);
+
+  const RenderCollectionItem = ({item = null}) => {
+    return (
+      <>
+        <Text style={styles.H1}>{item?.collection_name}</Text>
+        <FlatList
+          data={item?.books}
+          renderItem={({item}) => (
+            <PrimaryItem
+              item={item}
+              Event={() =>
+                navigation.navigate('BookDetailScreen', {item: item?.id})
+              }
+            />
+          )}
+          horizontal
+        />
+      </>
+    );
+  };
 
   if (loading) {
     return (
@@ -42,45 +62,71 @@ const MainPageScreen = ({navigation}) => {
     );
   } else {
     return (
-      <ScrollView style={styles.mainScreenBackView}>
-        <CarouselComponent item={data.banner} />
-        <Text style={styles.H1}>{data.collections[0]?.collection_name}</Text>
-        <FlatList
-          data={data.collections[0]?.books}
-          renderItem={PrimaryItem}
-          horizontal
-        />
+      <>
+        <ScrollView style={styles.mainScreenBackView}>
+          <CarouselComponent item={data?.banner} />
 
-        <Text style={styles.H1}>{data.collections[1].collection_name}</Text>
-        <FlatList
-          data={data.collections[1]?.books}
-          renderItem={PrimaryItem}
-          horizontal
-        />
+          <FlatList
+            data={data?.collections}
+            renderItem={({item, index}) => <RenderCollectionItem item={item} />}
+          />
 
-        <Text style={styles.H1}>{data.collections[3]?.collection_name}</Text>
-        <FlatList
-          data={data.collections[3]?.books}
-          renderItem={PrimaryItem}
-          horizontal
-        />
-        
-        <Text style={styles.H1}>{data.collections[4]?.collection_name}</Text>
-        <FlatList
-          data={data.collections[4]?.books}
-          renderItem={PrimaryItem}
-          horizontal
-        />
-
-        <ArticlesButton Event={() => navigation.navigate('ArticlesScreen')}/>
-        <FlatList
-        data={data.articles}
-        renderItem={({item}) => <ArticlesItem item={item} Event={() => navigation.navigate('ArticleItemScreen', {item: item.id})}/>}
-        horizontal
-        />
-      </ScrollView>
+          <ArticlesButton Event={() => navigation.navigate('ArticlesScreen')} />
+          <FlatList
+            data={data?.articles}
+            renderItem={({item}) => (
+              <ArticlesItem
+                item={item}
+                Event={() =>
+                  navigation.navigate('ArticleItemScreen', {item: item.id})
+                }
+              />
+            )}
+            horizontal
+          />
+        </ScrollView>
+      </>
     );
   }
+};
+
+const MainPageScreen = ({navigation}) => {
+  const [focus, setFocus] = useState(0);
+  const MainHeaderTabBarList = useRef([
+    {
+      title: 'БУМАГА',
+      type: null,
+    },
+    {
+      title: 'ЭЛЕКТРОН',
+      type: 'ebook',
+    },
+    {
+      title: 'АУДИО',
+      type: 'audio',
+    },
+  ]);
+
+  return (
+    <>
+      <HeaderTabBar
+        data={MainHeaderTabBarList.current}
+        focus={focus}
+        setFocus={setFocus}
+      />
+      <FlatList
+        data={MainHeaderTabBarList.current}
+        renderItem={({item, index}) =>
+          focus == index ? (
+            <MainPageView
+              paramType={item.type}
+              navigation={navigation}
+            />
+          ) : null
+        }
+      />
+    </>
+  );
 };
 
 export default MainPageScreen;

@@ -1,18 +1,28 @@
-import {StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
 import RenderHTML from 'react-native-render-html';
 
 const ArticlesItem = ({item, isPage = false, Event = null}) => {
-    const width = isPage? '100%': 250;
+  const width = isPage ? '100%' : 250;
 
   return (
     <TouchableOpacity style={[styles.view, {width: width}]} onPress={Event}>
-      <FastImage style={styles.image} source={{uri: item.image}} />
+      <FastImage
+        style={styles.image}
+        source={{uri: item.image}}
+        resizeMode={FastImage.resizeMode.stretch}
+      />
       <Text style={styles.title} numberOfLines={3}>
         {item.title}
       </Text>
-      <RenderHTML source={{html: item.short_text}} numberOfLines={3}/>
+      <RenderHTML source={{html: item.short_text}} numberOfLines={3} />
     </TouchableOpacity>
   );
 };

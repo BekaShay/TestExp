@@ -12,6 +12,7 @@ const CarouselComponent = ({item}) => {
         <FastImage
           style={[styles.itemImage, {priority: FastImage.priority.normal}]}
           source={{uri: item.slider_image}}
+          resizeMode={FastImage.resizeMode.stretch}
         />
       </View>
     );
@@ -34,16 +35,15 @@ export default CarouselComponent;
 
 const styles = StyleSheet.create({
   carouselView: {
-    height: 160,
+    height: 184,
     width: '100%',
-    // backgroundColor: 'green',
   },
   itemContainer: {
     height: height,
     width: width,
   },
   itemImage: {
-    height: 160,
+    height: 184,
     width: width,
   },
 });
