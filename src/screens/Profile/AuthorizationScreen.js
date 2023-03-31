@@ -4,7 +4,7 @@ import SwichButtonComponent from '../../components/buttons/SwichButtonComponent'
 import LogInView from './LogInView';
 import SignInView from './SignInView';
 
-const AuthorizationScreen = () => {
+const AuthorizationScreen = ({navigation}) => {
   const [loginOrSignin, setLoginOrSignin] = useState(1);
 
   return ( 
@@ -15,7 +15,7 @@ const AuthorizationScreen = () => {
         focus={loginOrSignin}
         setFocus={setLoginOrSignin}
       />
-      {(loginOrSignin?<SignInView />:<LogInView/>)}      
+      {(loginOrSignin?<SignInView />:<LogInView navigation={navigation}/>)}      
     </View>
 
   );

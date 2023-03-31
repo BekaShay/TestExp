@@ -8,7 +8,7 @@ const TextInputComponent = ({paramPlaceholder='', paramOnChange=null, paramValue
             <TextInput style={styles.TextInputStyle}
                 placeholder={paramPlaceholder}
                 value={paramValue}
-                onChange={paramOnChange}
+                onChangeText={paramOnChange}
                 placeholderTextColor='#999999'
             />
         </View>

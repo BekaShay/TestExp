@@ -11,6 +11,11 @@ import MyBooksScreen from "../../screens/myBooks/MyBooksScreen";
 import AuthorizationScreen from "../../screens/profile/AuthorizationScreen";
 import ProfileScreenTrue from "../../screens/profile/ProfileScreenTrue";
 
+// const IsAuth = () => {
+//     const {isAuth} = useAuth();
+//     // return isAuth?
+// }
+
 const BottomBarsList = [
     {
         name: 'MainPageScreen',
@@ -43,7 +48,7 @@ const BottomBarsList = [
     },
     {
         name: 'ProfileScreen',
-        component: ConstatsApp.authIs?ProfileScreenTrue:AuthorizationScreen,
+        component: (ConstatsApp.authIs?ProfileScreenTrue:AuthorizationScreen),
         title: 'Профиль',
         logoTrue: <ProfileLogo focused={true}/>,
         logoFalse: <ProfileLogo/>,

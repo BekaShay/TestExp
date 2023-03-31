@@ -37,3 +37,29 @@ export class NavigatController {
     return await API.get('page/' + id, {params: params});
   };
 }
+
+export class AuthController {
+  static getUser = async params => {
+    return await API.post(URLS.API.AUTH.LOGIN, params);
+  };
+
+  static createUser = async params => {
+    return await API.post(URLS.API.AUTH.REGISTER, params);
+  };
+
+  static forgotPassword = async params => {
+    return await API.post(URLS.API.AUTH.FORGOT_PASSWORD, params);
+  };
+}
+
+export class ProfileController {
+  static get = async () => {
+    return await API.get(URLS.API.PROFILE);
+  };
+
+  static update = async params => {
+    return await API.post(URLS.API.UPDATE_PROFILE, params, {
+      headers: {'Content-Type': 'multipart/form-data'},
+    });
+  };
+}

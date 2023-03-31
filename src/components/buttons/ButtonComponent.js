@@ -7,7 +7,8 @@ const ButtonComponent = ({
   buttonStyle = null,
   buttonColor = ConstatsApp.mainColor,
   buttonTextColor = '#FFFFFF',
-  isBold = false
+  isBold = false,
+  onPressFun = null,
 
 }) => {
   return (
@@ -15,7 +16,8 @@ const ButtonComponent = ({
       styles.ButtonBackground,
       buttonStyle,
       {backgroundColor: buttonColor},
-    ]}>
+    ]}
+    onPress={onPressFun}>
         <Text style={[styles.ButtonText,{color: buttonTextColor, fontWeight: isBold? 'bold': 'normal'}]}>{buttonText}</Text>
     </TouchableOpacity>
   );

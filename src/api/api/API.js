@@ -5,6 +5,7 @@ export const API = axios.create({
   headers: {
     Accept: 'application/json',
     lang: 'ru',
+    Authorization: 'Authorization',
   },
 });
 

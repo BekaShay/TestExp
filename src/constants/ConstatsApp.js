@@ -1,6 +1,6 @@
 const ConstatsApp = {
     mainColor: '#0099FF',
-    authIs:  true,
+    authIs:  false,
 };
 
 export default ConstatsApp;
