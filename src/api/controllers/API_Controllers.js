@@ -63,3 +63,39 @@ export class ProfileController {
     });
   };
 }
+
+export class BasketController {
+  static getAll = async () => {
+    return await API.get(URLS.API.BASKET);
+  };
+
+  static update = async params => {
+    return await API.post(URLS.API.ADD_BASKET, params);
+  };
+}
+
+export class MyBooksController {
+  static get = async () => {
+    return await API.get(URLS.API.MY_BOOKS);
+  };
+
+  static getAudioChapter = async params => {
+    return await API.get(URLS.API.BOOK_CHAPTER, {params});
+  };
+
+  static getNewOverride = async () => {
+    return await API.get(URLS.API.USER_ALL_ORDERS);
+  };
+}
+
+export class AuthorController {
+  static getById = async params => {
+    return await API.get(URLS.API.AUTHOR, params);
+  };
+}
+
+export class PublisherController {
+  static getById = async params => {
+    return await API.get(URLS.API.PUBLISHER, params);
+  };
+}

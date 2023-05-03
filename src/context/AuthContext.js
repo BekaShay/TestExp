@@ -1,6 +1,4 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {STORAGE} from '../../constants/storage';
-import { getStorage } from '../storage/LocalStorage';
 
 
 const AuthContext = createContext({});
@@ -11,9 +9,7 @@ const useAuth = () => {
 };
 
 const AuthProvider = ({children}) => {
-  const [isAuth, setIsAuth] = useState(false);
-
-  
+  const [isAuth, setIsAuth] = useState(false);  
 
   return (
     <AuthContext.Provider value={{isAuth, setIsAuth}}>

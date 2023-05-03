@@ -13,6 +13,7 @@ export const setStorage = async (key, data) => {
     const json = JSON.stringify(data); // конвертация в жсон формат
     await AsyncStorage.setItem(key, json);
   } catch (error) {
+    console.log('error', error);
   }
 };
 

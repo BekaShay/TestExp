@@ -11,48 +11,84 @@ import MyBooksScreen from "../../screens/myBooks/MyBooksScreen";
 import AuthorizationScreen from "../../screens/profile/AuthorizationScreen";
 import ProfileScreenTrue from "../../screens/profile/ProfileScreenTrue";
 
-// const IsAuth = () => {
-//     const {isAuth} = useAuth();
-//     // return isAuth?
-// }
-
 const BottomBarsList = [
     {
         name: 'MainPageScreen',
         component: MainPageScreen,
         title: 'Главная',
-        logoTrue: <MainLogo focused={true}/>,
-        logoFalse: <MainLogo/>,
+        logoTrue: <MainLogo focused={true} />,
+        logoFalse: <MainLogo />,
     },
-    
+
     {
         name: 'MyBooksScreen',
         component: MyBooksScreen,
         title: 'Мои Книги',
-        logoTrue: <MyBooksLogo focused={true}/>,
-        logoFalse: <MyBooksLogo/>,
+        logoTrue: <MyBooksLogo focused={true} />,
+        logoFalse: <MyBooksLogo />,
     },
     {
         name: 'MySubscriptionsScreen',
         component: MySubscriptionsScreen,
         title: 'Мои подписки',
-        logoTrue: <CatalogLogo focused={true}/>,
-        logoFalse: <CatalogLogo/>,
+        logoTrue: <CatalogLogo focused={true} />,
+        logoFalse: <CatalogLogo />,
     },
     {
         name: 'BascetScreen',
         component: BascetScreen,
         title: 'Корзина',
-        logoTrue: <View><BascetLogo focused={true}/><BascetCount/></View>,
-        logoFalse: <View><BascetLogo/><BascetCount/></View>,
+        logoTrue: <View><BascetLogo focused={true} /><BascetCount /></View>,
+        logoFalse: <View><BascetLogo /><BascetCount /></View>,
     },
     {
         name: 'ProfileScreen',
-        component: (ConstatsApp.authIs?ProfileScreenTrue:AuthorizationScreen),
+        component: ProfileScreenTrue,
         title: 'Профиль',
-        logoTrue: <ProfileLogo focused={true}/>,
-        logoFalse: <ProfileLogo/>,
+        logoTrue: <ProfileLogo focused={true} />,
+        logoFalse: <ProfileLogo />,
     },
 ];
 
-export default BottomBarsList;
+const AuthorisationScreens = [
+    {
+        name: 'MainPageScreen',
+        component: MainPageScreen,
+        title: 'Главная',
+        logoTrue: <MainLogo focused={true} />,
+        logoFalse: <MainLogo />,
+    },
+
+    {
+        name: 'MyBooksScreen',
+        component: MyBooksScreen,
+        title: 'Мои Книги',
+        logoTrue: <MyBooksLogo focused={true} />,
+        logoFalse: <MyBooksLogo />,
+    },
+    {
+        name: 'MySubscriptionsScreen',
+        component: MySubscriptionsScreen,
+        title: 'Мои подписки',
+        logoTrue: <CatalogLogo focused={true} />,
+        logoFalse: <CatalogLogo />,
+    },
+    {
+        name: 'BascetScreen',
+        component: BascetScreen,
+        title: 'Корзина',
+        logoTrue: <View><BascetLogo focused={true} /><BascetCount /></View>,
+        logoFalse: <View><BascetLogo /><BascetCount /></View>,
+    },
+    {
+        name: 'AuthorizationScreen',
+        component: AuthorizationScreen,
+        title: 'Авторизация',
+        logoTrue: <ProfileLogo focused={true} />,
+        logoFalse: <ProfileLogo />,
+    },
+];
+
+
+
+export {BottomBarsList, AuthorisationScreens};

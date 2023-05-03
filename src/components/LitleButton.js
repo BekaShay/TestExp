@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   isPrice: {
-    fontWeight: 'bold',
     fontSize: 21,
   },
   isNotPrice: {

@@ -1,15 +1,26 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainPageScreen from '../../screens/mainPage/MainPageScreen';
-import BottomBarsList from './BottomBarsList';
-import MainLogo, {CategoryLogo, SearchLogo} from '../../assets/icons/svgIcons';
+import { BottomBarsList, AuthorisationScreens } from './BottomBarsList';
+import MainLogo, { CategoryLogo, SearchLogo } from '../../assets/icons/svgIcons';
 import ConstatsApp from '../../constants/ConstatsApp';
 import TabBarButtonComponent from '../../components/buttons/TabBarButtonComponent';
 import { ScreenStackHeaderLeftView } from 'react-native-screens';
+import { useAuth } from '../../context/AuthContext';
+import ProfileScreenTrue from '../../screens/profile/ProfileScreenTrue';
+import AuthorizationScreen from '../../screens/profile/AuthorizationScreen';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigate = ({navigation}) => {
+
+
+const TabNavigate = ({ navigation }) => {
+  const { isAuth } = useAuth();
+
+  var TabBarScreens = isAuth ? BottomBarsList:AuthorisationScreens;
+  
+
+ 
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -19,14 +30,14 @@ const TabNavigate = ({navigation}) => {
         tabBarinactiveTintColor: '#C1CBD7',
         tabBarLabelStyle: [null],
       })}>
-      {BottomBarsList.map((param, index) => (
+      {TabBarScreens.map((param, index) => (
         <Tab.Screen
           key={index}
           {...param}
           options={{
             title: param.title,
-            
-            tabBarIcon: ({focused, size, color}) => {
+
+            tabBarIcon: ({ focused, size, color }) => {
               if (focused) {
                 return param.logoTrue;
               } else {
@@ -48,9 +59,9 @@ const TabNavigate = ({navigation}) => {
           }}
           listeners={{
             tabPress: event => {
-              if (!ConstatsApp.authIs) {
+              if (!isAuth) {
                 event.preventDefault();
-                navigation.navigate('ProfileScreen');
+                navigation.navigate('AuthorizationScreen');
               }
             },
           }}

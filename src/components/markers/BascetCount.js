@@ -1,13 +1,27 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import ConstatsApp from '../../constants/ConstatsApp';
+import { useBascetCount } from '../../context/BascetCountProvider';
+import { BasketController } from '../../api/controllers/API_Controllers';
 
-const BascetCount = ({count = 0}) =>
-  count ? (
-    <View style={styles.view}>
-      <Text style={styles.count}>{count}</Text>
-    </View>
-  ) : null;
+const BascetCount = () => {
+  const [data, setData] = useState(null);
+  const [loading, setloading] = useState(true);
+  const { bascetCount } = useBascetCount();
+
+
+  if (!loading) {
+    if (bascetCount) {
+      return <View style={styles.view}>
+        <Text style={styles.count}>{bascetCount}</Text>
+      </View>
+    }
+    else {
+      return null;
+    }
+  }
+  else return null
+}
 
 export default BascetCount;
 

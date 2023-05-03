@@ -3,12 +3,15 @@ import { API } from '../api/api/API';
 import { getStorage } from '../storage/LocalStorage'
 
 const InitAPI = async () => {
-    const tempToken = await getStorage(TOKEN);
-
+    const tempToken = await getStorage('TOKEN');
+    
     if (tempToken) {
-        API.defaults.headers.common[REQUEST_HEDERS.AUTHORIZATION] =
+        console.log('Init Token: ', tempToken);
+        API.defaults.headers['Authorization'] =
             `Bearer ${tempToken}`;
     }
+    API.defaults.headers.lang = 'ru';
+
 }
 
 export default InitAPI

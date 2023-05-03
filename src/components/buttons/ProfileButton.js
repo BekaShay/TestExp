@@ -7,6 +7,10 @@ const ProfileButton = ({
   text = 'BekaShaymov@gmail.com',
   imageUri = null,
 }) => {
+
+
+  
+
   return (
     <View style={styles.profileView}>
       <Image style={styles.image} source={{uri: imageUri}} />

@@ -21,7 +21,7 @@ const InformationButton = ({
       const data = response.data;
       setData(data);
       setloading(false);
-      console.log('Data :        ', data?.menu);
+      // console.log('Data :        ', data?.menu);
     } catch (error) {
       console.error(error);
       setloading(false);
@@ -34,8 +34,9 @@ const InformationButton = ({
 
   return (
     <>
-      {data?.menu?.map(item => (
+      {data?.menu?.map((item,index) => (
         <TouchableOpacity
+        key={index}
           style={styles.buttonView}
           onPress={() => {
               navigation.navigate('InformationScreen', {

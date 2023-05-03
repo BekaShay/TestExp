@@ -1,12 +1,12 @@
 import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
-import React from 'react';
+import React, { useCallback } from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 import FastImage from 'react-native-fast-image';
 
 const {height, width} = Dimensions.get('window');
 
 const CarouselComponent = ({item}) => {
-  const renderItem = ({item}) => {
+  const renderItem = useCallback(({item}) => {
     return (
       <View style={styles.itemContainer}>
         <FastImage
@@ -16,7 +16,7 @@ const CarouselComponent = ({item}) => {
         />
       </View>
     );
-  };
+  },[])
 
   return (
     <View style={styles.carouselView}>
@@ -26,6 +26,7 @@ const CarouselComponent = ({item}) => {
         horizontal
         snapToAlignment="center"
         pagingEnabled
+        keyExtractor={item => item.id}
       />
     </View>
   );

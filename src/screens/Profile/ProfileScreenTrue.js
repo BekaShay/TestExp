@@ -1,24 +1,44 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import ExitModalComponent from '../../components/modal/ExitModalComponent';
 import OurContactsComponent from '../../components/OurContactsComponent';
 import ProfileButton from '../../components/buttons/ProfileButton';
 import SwichButtonComponent from '../../components/buttons/SwichButtonComponent';
 import TariffComponent from '../../components/TariffComponent';
 import InformationButton from '../Information/InformationButton';
+import { ProfileController } from '../../api/controllers/API_Controllers';
 
-const ProfileScreenTrue = ({navigation}) => {
-  
+const ProfileScreenTrue = ({ navigation }) => {
   const [exitVisible, setExitVisible] = useState(false);
   const [isLocalization, setIsLocalization] = useState(true);
-
   
-  console.log('exitVisible', exitVisible);
+  const[data,setData]=useState(null);
+  const[loading, setloading]=useState(true);
+
+  const getData = async () => {
+    setloading(true);
+    try {
+      const response = await ProfileController.get();
+      const data = response.data;
+      setData(data);
+      setloading(false);
+      console.log('------------- UserData: ', data);
+    } catch (error) {
+      console.error(error);
+      setloading(false);
+    }
+    setloading(false);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+
 
   return <>
-    <ExitModalComponent modalVisible={exitVisible} setModalVisible={setExitVisible}/>
+    <ExitModalComponent modalVisible={exitVisible} setModalVisible={setExitVisible} />
     <ScrollView style={styles.scrollView}>
-    <SwichButtonComponent
+      <SwichButtonComponent
         styleBackView={styles.switchButton}
         firstText="Русский"
         secondText="Қазақша"
@@ -26,17 +46,17 @@ const ProfileScreenTrue = ({navigation}) => {
         setFocus={setIsLocalization}
       />
       <TouchableOpacity onPress={() => navigation.navigate('EditProfileScreen')}>
-        <ProfileButton/>
+        <ProfileButton title={data?.user_name} text={data?.email} imageUri={data?.avatar}/>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('TariffScreen')}>
-        <TariffComponent isButton/>
+        <TariffComponent isButton />
       </TouchableOpacity>
       <Text style={styles.title}>Навигация</Text>
-      <InformationButton navigation = {navigation} modalVisible={exitVisible} setModalVisible={setExitVisible}/>
+      <InformationButton navigation={navigation} modalVisible={exitVisible} setModalVisible={setExitVisible} />
     </ScrollView>
-    <OurContactsComponent/>
+    <OurContactsComponent />
   </>
-  
+
 };
 
 export default ProfileScreenTrue;

@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import ConstatsApp from '../../constants/ConstatsApp';
 
-const HeaderTabBar = ({data = null, focus = 0, setFocus = null}) => {
+const HeaderTabBar = ({ data = null, focus = 0, setFocus = null }) => {
 
   function FunOnPress(index) {
     console.log(index);
@@ -13,6 +13,7 @@ const HeaderTabBar = ({data = null, focus = 0, setFocus = null}) => {
     <View style={styles.view}>
       {data?.map((item, index) => (
         <TouchableOpacity
+          key={index}
           style={[
             styles.button,
             {
@@ -43,7 +44,6 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },

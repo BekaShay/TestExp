@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
 import ArticlesItem from '../../components/items/ArticlesItem';
-import {BackLogo} from '../../assets/icons/svgIcons';
-import {ArticlesController} from '../../api/controllers/API_Controllers';
+import { BackLogo } from '../../assets/icons/svgIcons';
+import { ArticlesController } from '../../api/controllers/API_Controllers';
 
-const ArticlesScreen = ({navigation}) => {
+const ArticlesScreen = ({ navigation }) => {
   const [data, setData] = useState(null);
   const [loading, setloading] = useState(true);
 
@@ -24,13 +24,6 @@ const ArticlesScreen = ({navigation}) => {
   };
   useEffect(() => {
     getData();
-  }, []);
-
-  console.log('Navigate: ', navigation);
-
-  console.log(data);
-
-  useEffect(() => {
     navigation.setOptions({
       title: 'Мақалалар',
       headerBackTitle: ' ',
@@ -41,14 +34,20 @@ const ArticlesScreen = ({navigation}) => {
     });
   }, []);
 
+  const renderItem = useCallback(({ item }) =>
+    <ArticlesItem item={item} isPage Event={() => navigation.navigate('ArticleItemScreen', { id: item.id })} />
+    , [])
+
   if (loading) {
-    <Text>Loading</Text>;
+    return <View style={{ alignItems: 'center' }}>
+      <Text>Loading...</Text>
+    </View>;
   } else {
     return (
       <View style={styles.view}>
         <FlatList
           data={data.data}
-          renderItem={({item}) => <ArticlesItem item={item} isPage Event={() => navigation.navigate('ArticleItemScreen', {id: item.id})}/>}
+          renderItem={renderItem}
           keyExtractor={item => item.id}
         />
       </View>
@@ -60,9 +59,7 @@ export default ArticlesScreen;
 
 const styles = StyleSheet.create({
   view: {
-    height: '100%',
-    width: '100%',
-    // backgroundColor: 'green',
+    flex: 1,
     paddingRight: 10,
   },
 });

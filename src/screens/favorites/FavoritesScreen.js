@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import {BackLogo} from '../../assets/icons/svgIcons';
 
 const FavoritesScreen = ({navigation}) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Избранные',
       headerBackTitle: ' ',

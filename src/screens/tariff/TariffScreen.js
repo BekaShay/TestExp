@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import TariffComponent from '../../components/TariffComponent';
 import {TariffLogo} from '../../assets/icons/svgIcons';
@@ -27,24 +27,23 @@ const TariffScreen = ({navigation}) => {
     navigation.setOptions({
       title: 'Мой тариф',
       headerBackTitle: ' ',
-      //   headerBackImage: () => (),
       headerTitleStyle: {
         fontWeight: 'bold',
       },
     });
   }, []);
 
-  const RenderItem = ({name=null, price=null}) => (
+  const renderItem = useCallback(({item}) => (
     <View style={styles.tariffBackView}>
       <View style={styles.tariffItemView}>
-        <Text style={styles.tariffItemText}>{name}</Text>
+        <Text style={styles.tariffItemText}>{item.name}</Text>
         <TariffLogo />
         <TouchableOpacity style={styles.tariffItemButton}>
-          <Text style={styles.tariffItemButtonText}>{price}</Text>
+          <Text style={styles.tariffItemButtonText}>{item.price}</Text>
         </TouchableOpacity>
       </View>
     </View>
-  );
+  ),[])
 
   return (
     <View>
@@ -53,7 +52,7 @@ const TariffScreen = ({navigation}) => {
       <FlatList
       contentContainerStyle={{paddingBottom: 200}}
       data={tempData}
-      renderItem={({item}) => <RenderItem name={item.name} price={item.price}/>}
+      renderItem={renderItem}
       />
     </View>
   );

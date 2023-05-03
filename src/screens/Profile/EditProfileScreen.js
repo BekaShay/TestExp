@@ -1,9 +1,29 @@
 import {StyleSheet, Text, ScrollView, Image, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import TextBox from '../../components/TextBox';
+import { ProfileController } from '../../api/controllers/API_Controllers';
 
 const EditProfileScreen = ({navigation}) => {
+  const[data,setData]=useState(null);
+  const[loading, setloading]=useState(true);
+
+  const getData = async () => {
+    setloading(true);
+    try {
+      const response = await ProfileController.get();
+      const data = response.data;
+      setData(data);
+      setloading(false);
+      // console.log('------------- UserData: ', data);
+    } catch (error) {
+      console.error(error);
+      setloading(false);
+    }
+    setloading(false);
+  };
+
   useEffect(() => {
+    getData();
     navigation.setOptions({
       title: 'Профиль',
       headerBackTitle: ' ',
@@ -16,10 +36,10 @@ const EditProfileScreen = ({navigation}) => {
 
   return (
     <ScrollView style={styles.backView}>
-      <Image style={styles.profileImage} source={null}/>
+      <Image style={styles.profileImage} source={{uri: data?.avatar?data?.avatar:null}}/>
       <Text style={styles.title}>Контактная информация</Text>
-      <TextBox placeholder='ФИО'/>
-      <TextBox placeholder='E-mail'/>
+      <TextBox placeholder={data?.user_name?data.user_name:'ФИО'}/>
+      <TextBox placeholder={data?.email?data.email:'E-mail'}/>
       <TextBox placeholder='Телефон'/>
       <Text style={styles.title}>Адрес доставки</Text>
       <TextBox placeholder='Населенный пункт'/>

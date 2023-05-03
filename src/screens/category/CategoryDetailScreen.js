@@ -1,12 +1,12 @@
-import {FlatList} from 'react-native-gesture-handler';
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {BackLogo} from '../../assets/icons/svgIcons';
-import {GenreController} from '../../api/controllers/API_Controllers';
+import { FlatList } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { BackLogo } from '../../assets/icons/svgIcons';
+import { GenreController } from '../../api/controllers/API_Controllers';
 import PrimaryItem from '../../components/items/PrimaryItem';
 import CategoryBookItem from '../../components/items/CategoryBookItem';
 
-const CategoryDetailScreen = ({route, navigation}) => {
+const CategoryDetailScreen = ({ route, navigation }) => {
   const param = route.params;
 
   const [data, setData] = useState(null);
@@ -16,7 +16,7 @@ const CategoryDetailScreen = ({route, navigation}) => {
     setloading(true);
     try {
       const response = await GenreController.getById({
-        params: {genre_id: param?.id, lang: 'ru'},
+        params: { genre_id: param?.id, lang: 'ru' },
       });
       const data = response.data;
       setData(data);
@@ -42,21 +42,26 @@ const CategoryDetailScreen = ({route, navigation}) => {
     });
   }, []);
 
-  if (loading) return <Text>Loading</Text>;
+  const renderItem = useCallback(({ item }) => (
+    <CategoryBookItem
+      item={item}
+      Event={() =>
+        navigation.navigate('BookDetailScreen', { item: item?.book_id })
+      }
+    />
+  )
+
+    , [])
+
+  if (loading) return <View style={{alignItems: 'center', justifyContent: 'center'}}><Text>Loading</Text></View>;
   else
     return (
       <View style={styles.view}>
         <FlatList
           data={data?.data}
           numColumns={2}
-          renderItem={({item}) => (
-            <CategoryBookItem
-              item={item}
-              Event={() =>
-                navigation.navigate('BookDetailScreen', {item: item?.book_id})
-              }
-            />
-          )}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
         />
       </View>
     );

@@ -1,12 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {BackLogo} from '../../assets/icons/svgIcons';
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { BackLogo } from '../../assets/icons/svgIcons';
 import CategoryItem from '../../components/items/CategoryItem';
-import {FlatList} from 'react-native-gesture-handler';
-import {TempCategoryData} from '../../data/TempCategoryData';
-import {GenreController} from '../../api/controllers/API_Controllers';
+import { FlatList } from 'react-native-gesture-handler';
+import { TempCategoryData } from '../../data/TempCategoryData';
+import { GenreController } from '../../api/controllers/API_Controllers';
 
-const CategoryScreen = ({navigation}) => {
+const CategoryScreen = ({ navigation }) => {
   const [data, setData] = useState(null);
   const [loading, setloading] = useState(true);
 
@@ -37,14 +37,21 @@ const CategoryScreen = ({navigation}) => {
     });
   }, []);
 
-  return (
-    <View style={styles.view}>
-      <FlatList
-        data={data?.data}
-        renderItem={({item}) => <CategoryItem item={item} Event={() => navigation.navigate('CategoryDetailScreen', {id: item?.genre_id, title: item?.genre_name})}/>}
-      />
-    </View>
-  );
+  const renderItem = useCallback(({ item }) =>
+    <CategoryItem item={item} Event={() => navigation.navigate('CategoryDetailScreen', { id: item?.genre_id, title: item?.genre_name })} />
+    , [])
+  if (loading) { }
+  else {
+    return (
+      <View style={styles.view}>
+        <FlatList
+          data={data?.data}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
+      </View>
+    );
+  }
 };
 
 export default CategoryScreen;
