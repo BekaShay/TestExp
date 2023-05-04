@@ -39,7 +39,7 @@ const MainPageView = ({ paramType = null, navigation = null }) => {
             data={item?.books}
             renderItem={renderBookItem}
             horizontal
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => index}
           />
         </>
       )
@@ -80,13 +80,13 @@ const MainPageView = ({ paramType = null, navigation = null }) => {
           <FlatList
             data={data?.collections}
             renderItem={renderCollectionItem}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => index}
           />
 
           <ArticlesButton Event={() => navigation.navigate('ArticlesScreen')} />
           <FlatList
             data={data?.articles}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => index}
             renderItem={renderArticleItem}
             horizontal
           />
@@ -122,7 +122,7 @@ const MainPageScreen = ({ navigation }) => {
       />
       <FlatList
         data={MainHeaderTabBarList.current}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => index}
         renderItem={({ item, index }) =>
           focus == index ? (
             <MainPageView

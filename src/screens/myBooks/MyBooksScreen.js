@@ -17,7 +17,7 @@ const MyBooksScreen = ({navigation}) => {
       const data = response.data;
       setData(data);
       setloading(false);
-      console.log("MyBooks : ", data);
+      // console.log("MyBooks : ", data);
     } catch (error) {
       console.error(error);
       setloading(false);

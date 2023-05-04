@@ -19,37 +19,6 @@ const BascetCountProvider = ({ children }) => {
   );
 };
 
-export const InitBascetCount = () => {
-  const [data, setData] = useState(null);
-  const [loading, setloading] = useState(true);
-  const { bascetCount, setBascetCount } = useBascetCount();
 
-
-  const getCount = () => {
-    return data?.data.reduce((total, books) => {
-      return total + books?.quantity
-    }, 0)
-  }
-  const getData = async () => {
-    setloading(true);
-    try {
-      const response = await BasketController.getAll();
-      const data = response.data;
-      setData(data);
-      setloading(false);
-    } catch (error) {
-      console.error(error);
-      setloading(false);
-    }
-  }
-  useEffect(() => {
-    const a = getData();
-    setBascetCount(a);
-    setloading(false);
-  }, []);
-
-
-
-}
 
 export { useBascetCount, BascetCountProvider };

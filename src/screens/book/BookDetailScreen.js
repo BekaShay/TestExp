@@ -16,7 +16,7 @@ import SwichButtonComponent from '../../components/buttons/SwichButtonComponent'
 import ConstatsApp from '../../constants/ConstatsApp';
 import ReviewBar from '../../components/ReviewBar';
 import ButtonComponent from '../../components/buttons/ButtonComponent';
-import { BookController } from '../../api/controllers/API_Controllers';
+import { BasketController, BookController } from '../../api/controllers/API_Controllers';
 import PrimaryItem from '../../components/items/PrimaryItem';
 import RenderHTML from 'react-native-render-html';
 import FeedbackItem from '../../components/items/FeedbackItem';
@@ -29,6 +29,51 @@ const BookDetailScreen = ({ route, navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   const id = route.params;
+
+  const getPriceOrType = (isType = false, checkType = false) => {
+    if (isType) {
+      if (bookType == 0) {
+        return 'paper';
+      }
+      else if (bookType == 1) {
+        return 'ebook';
+      }
+      else if (bookType == 2) {
+        return 'audio';
+      }
+      else {
+        return 0;
+      }
+    }
+    else if (checkType) {
+      if (bookType == 0) {
+        return true;
+      }
+      else if (bookType == 1) {
+        return data?.ebook_path ? true : false;
+      }
+      else if (bookType == 2) {
+        return data?.audio_file ? true : false;
+      }
+      else {
+        return false;
+      }
+    }
+    else {
+      if (bookType == 0) {
+        return data?.paperbook_price ? data?.paperbook_price : 0;
+      }
+      else if (bookType == 1) {
+        return data?.ebook_price ? data?.ebook_price : 0;
+      }
+      else if (bookType == 2) {
+        return data?.audio_price ? data?.audio_price : 0;
+      }
+      else {
+        return 0;
+      }
+    }
+  }
 
   const getData = async () => {
     setLoadting(true);
@@ -44,7 +89,7 @@ const BookDetailScreen = ({ route, navigation }) => {
       console.error(error);
       setLoadting(false);
     }
-    setLoadting(false);
+    // setLoadting(false);
   };
 
   useLayoutEffect(() => {
@@ -69,7 +114,7 @@ const BookDetailScreen = ({ route, navigation }) => {
 
   const GiftButton = () => {
     return (
-      <TouchableOpacity style={styles.giftView}>
+      <TouchableOpacity style={styles.giftView} onPress={() => addBookToBascet()}>
         <GiftLogo />
       </TouchableOpacity>
     );
@@ -80,9 +125,31 @@ const BookDetailScreen = ({ route, navigation }) => {
       Alert.alert('Внимание!', 'Книга нет в наличии');
       return;
     }
+  }
 
-    
-
+  const addBookToBascet = async () => {
+    console.log("Pressed");
+    if (!data?.available) {
+      Alert.alert(strings['Внимание!'], strings['Книга нет в наличии']);
+      return;
+    }
+    else {
+      if (getPriceOrType() <= 0) {
+        if (!getPriceOrType(false, true)) {
+          console.log('Book not found !');
+        }
+      }
+      else {
+        let params = {
+          book_id: data?.book_id,
+          type: getPriceOrType(true),
+        };
+        // console.log("Book is added");
+        const response = await BasketController.update(params);
+        console.log("Resp: ", response);
+        navigation.navigate('BascetScreen');
+      }
+    }
   }
 
   const renderItem = useCallback(({ item }) =>
@@ -157,7 +224,7 @@ const BookDetailScreen = ({ route, navigation }) => {
               }
             </View>
             <ReviewBar rating={data?.rating} reviewCount={data?.feedbacks?.length} />
-            <Text style={styles.price}>{data?.paperbook_price} ₸</Text>
+            <Text style={styles.price}>{getPriceOrType()} ₸</Text>
             <TouchableOpacity>
               <Text style={styles.rulesText}>
                 Ознакомьтесь с правилами доставки
@@ -165,7 +232,7 @@ const BookDetailScreen = ({ route, navigation }) => {
             </TouchableOpacity>
             <View style={styles.buyView}>
               <View style={{ flex: 1 }}>
-                <ButtonComponent buttonText="Купить сейчас" isBold onPressFun={tapBuyBook}/>
+                <ButtonComponent buttonText="Купить сейчас" isBold onPressFun={tapBuyBook} />
               </View>
               <GiftButton />
             </View>

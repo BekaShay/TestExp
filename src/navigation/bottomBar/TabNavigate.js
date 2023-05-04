@@ -7,20 +7,15 @@ import ConstatsApp from '../../constants/ConstatsApp';
 import TabBarButtonComponent from '../../components/buttons/TabBarButtonComponent';
 import { ScreenStackHeaderLeftView } from 'react-native-screens';
 import { useAuth } from '../../context/AuthContext';
-import ProfileScreenTrue from '../../screens/profile/ProfileScreenTrue';
-import AuthorizationScreen from '../../screens/profile/AuthorizationScreen';
 
 const Tab = createBottomTabNavigator();
-
-
 
 const TabNavigate = ({ navigation }) => {
   const { isAuth } = useAuth();
 
-  var TabBarScreens = isAuth ? BottomBarsList:AuthorisationScreens;
-  
+  var TabBarScreens = isAuth ? BottomBarsList : AuthorisationScreens;
 
- 
+
   return (
     <Tab.Navigator
       screenOptions={() => ({

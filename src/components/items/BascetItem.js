@@ -7,7 +7,7 @@ import CountButtonComponent from '../buttons/CountButtonComponent';
 
 const BascetItem = (data) => {
   const [count, setCount] = useState(1);
-  console.log('BasketItem : ', data?.data);
+  // console.log('BasketItem : ', data?.data);
 
 
 

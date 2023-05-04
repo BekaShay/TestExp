@@ -6,7 +6,7 @@ const InitAPI = async () => {
     const tempToken = await getStorage('TOKEN');
     
     if (tempToken) {
-        console.log('Init Token: ', tempToken);
+        // console.log('Init Token: ', tempToken);
         API.defaults.headers['Authorization'] =
             `Bearer ${tempToken}`;
     }

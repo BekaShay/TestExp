@@ -9,7 +9,6 @@ const BascetCount = () => {
   const [loading, setloading] = useState(true);
   const { bascetCount } = useBascetCount();
 
-
   if (!loading) {
     if (bascetCount) {
       return <View style={styles.view}>
